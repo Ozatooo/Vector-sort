@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
 using namespace std;
+
 
 
 
@@ -66,9 +68,7 @@ void klasa::sort()
 	
 	for (int i=0; i<spis.size(); i++)
 	{
-		for(int i=0;i<spis.size();++i)
 		
- 			cout<<spis[i];
 	}
 	
 
@@ -98,8 +98,8 @@ void klasa::zapiszDoPliku(const char *nazwa)
         plik.open(nazwa);
         for (vector<struct uczen>::iterator it = spis.begin(); it != spis.end(); ++it)
         {
-                  plik <<"["<<"{"<<it->wiek<<":"<<it->imie<<":"<<it->nazwisko<<"]"<< "\n";
-              	  cout <<"["<<"{"<<it->wiek<<":"<<it->imie<<":"<<it->nazwisko<<"]"<< "\n";
+              	  plik <<"["<<"{"<<"\"imie_nazwisko\":"<<"\""<<it->imie<<it->nazwisko<<"\","<<"\"wiek\""<<":\""<<it->wiek<<"\""<<"}"<<"]"<< "\n";
+              	  cout <<"["<<"{"<<"\"wiek\":"<<"\""<<it->wiek<<"\","<<"\"imie\""<<":\""<<it->imie<<"\",\"nazwisko\":\""<<it->nazwisko<<"\""<<"}"<<"]"<< "\n";
         }
         plik.close();  
 }
@@ -108,12 +108,18 @@ void klasa::zapiszDoPliku(const char *nazwa)
 
 
 int main(int argc, char** argv) {
-        klasa TI;
-        TI.wczytajZPliku("b.txt");
-        TI.sort();
-        TI.wypisz();
-        TI.zapiszDoPliku("a.txt");
-
+			cout << "Content-type: text/html"
+			 "<html>"
+          		"<head>"
+         		   "<title></title>"
+			         	"<body> \n";
+			        klasa TI;
+				        TI.wczytajZPliku("b.txt");
+				        TI.sort();
+				        TI.wypisz();
+				        TI.zapiszDoPliku("a.txt");
+		     cout << "</body>"
+      	  		    	"</html>";
     
         return 0;
 }
